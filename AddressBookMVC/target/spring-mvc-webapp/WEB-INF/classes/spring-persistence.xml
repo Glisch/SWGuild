@@ -22,8 +22,10 @@
         <property name="url" value="jdbc:mysql://localhost:3306/address_book" />
         <property name="username" value="root" />
         <property name="password" value="password" />
-        <property name="initialSize" value="5" />
-        <property name="maxActive" value="10" />
+        <property name="testOnBorrow" value="true" />
+        <property name="validationQuery" value="SELECT 1" />
+        <property name="removeAbandoned" value="true" />
+        <property name="removeAbandonedTimeout" value="55" />
     </bean>
     
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
