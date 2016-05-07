@@ -5,8 +5,6 @@ import com.thesoftwareguild.addressbookmvc.daos.PersonDao;
 import com.thesoftwareguild.addressbookmvc.models.Address;
 import com.thesoftwareguild.addressbookmvc.models.CommandObject;
 import com.thesoftwareguild.addressbookmvc.models.Person;
-import java.util.ArrayList;
-import java.util.List;
 import javax.inject.Inject;
 import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
@@ -89,23 +87,5 @@ public class AddressController {
         
         addressDao.add(address);
         return address;
-    }
-
-    @RequestMapping(value = "/search")
-    @ResponseBody
-    public List search(@RequestBody String input) {
-        
-        String search = input.substring(7);
-
-        List<Address> addresses = new ArrayList();
-        
-        addressDao.list().stream()
-                .forEach((Address a) -> {
-                    if(a.getPerson().getFirstName().contains(search) || a.getPerson().getLastName().contains(search) || a.getCity().contains(search) || a.getState().contains(search) || a.getZip().contains(search)){
-                        addresses.add(a);
-                    }
-                });
-        
-        return addresses;
     }
 }

@@ -5,9 +5,7 @@ $(document).ready(function () {
 
         e.preventDefault();
 
-        $('#add-address-validation-errors').empty();
-        $('#edit-address-validation-errors').empty();
-        $('#new-address-validation-errors').empty();
+        $(".errorMsg").empty();
 
         var addressData = JSON.stringify({
             firstName: $('#add-first-name').val(),
@@ -52,8 +50,10 @@ $(document).ready(function () {
             var errors = data.responseJSON.errors;
 
             $.each(errors, function (index, validationError) {
-                $('#add-address-validation-errors').append(validationError.fieldName + ": " + validationError.message).append("<br/>");
-            });
+                        $('#create-entry-error-' + validationError.fieldName)
+                                .append("* " + validationError.message)
+                                .append("<br />");
+                    });
 
         });
 
@@ -136,6 +136,8 @@ $(document).ready(function () {
     $(document).on('click', '#edit-name-button', function (e) {
 
         e.preventDefault();
+        
+        $(".errorMsg").empty();
 
         var id = $('#edit-name-id').val();
 
@@ -173,8 +175,10 @@ $(document).ready(function () {
             var errors = data.responseJSON.errors;
 
             $.each(errors, function (index, validationError) {
-                $('#edit-address-validation-errors').append(validationError.fieldName + ": " + validationError.message).append("<br/>");
-            });
+                        $('#edit-name-error-' + validationError.fieldName)
+                                .append("* " + validationError.message)
+                                .append("<br />");
+                    });
 
         });
     });
@@ -182,6 +186,8 @@ $(document).ready(function () {
     $(document).on('click', '#edit-address-button', function (e) {
 
         e.preventDefault();
+        
+        $(".errorMsg").empty();
 
         var id = $('#edit-id').val();
 
@@ -216,8 +222,10 @@ $(document).ready(function () {
             var errors = data.responseJSON.errors;
 
             $.each(errors, function (index, validationError) {
-                $('#edit-address-validation-errors').append(validationError.fieldName + ": " + validationError.message).append("<br/>");
-            });
+                        $('#edit-entry-error-' + validationError.fieldName)
+                                .append("* " + validationError.message)
+                                .append("<br />");
+                    });
 
         });
     });
@@ -225,6 +233,8 @@ $(document).ready(function () {
     $(document).on('click', '#new-address-button', function (e) {
 
         e.preventDefault();
+        
+        $(".errorMsg").empty();
 
         var id = $('#edit-id').val();
 
@@ -260,8 +270,10 @@ $(document).ready(function () {
             var errors = data.responseJSON.errors;
 
             $.each(errors, function (index, validationError) {
-                $('#new-address-validation-errors').append(validationError.fieldName + ": " + validationError.message).append("<br/>");
-            });
+                        $('#new-address-error-' + validationError.fieldName)
+                                .append("* " + validationError.message)
+                                .append("<br />");
+                    });
 
         });
     });

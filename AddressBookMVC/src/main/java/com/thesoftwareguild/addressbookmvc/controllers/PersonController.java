@@ -1,9 +1,7 @@
-
 package com.thesoftwareguild.addressbookmvc.controllers;
 
 import com.thesoftwareguild.addressbookmvc.daos.AddressDao;
 import com.thesoftwareguild.addressbookmvc.daos.PersonDao;
-import com.thesoftwareguild.addressbookmvc.models.Address;
 import com.thesoftwareguild.addressbookmvc.models.CommandObject;
 import com.thesoftwareguild.addressbookmvc.models.Person;
 import javax.inject.Inject;
@@ -30,8 +28,6 @@ public class PersonController {
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     @ResponseBody
     public Person edit(@Valid @RequestBody CommandObject co) {
-        
-        
         Person person = addressDao.get(co.getId()).getPerson();
         
         person.setFirstName(co.getFirstName());
